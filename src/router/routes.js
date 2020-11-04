@@ -1,7 +1,15 @@
+import Components from '../config/componentExport'
+
 const Routes = [
     {
         path: '/home',
-        component: 'Home'
+        component: Components['Home'],
+        routes: [
+            {
+                path: '/home/detail',
+                component: Components['Detail']
+            }
+        ]
     }
 ]
 

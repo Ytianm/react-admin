@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { renderRoutes } from 'react-router-config'
 
-const Home = () => {
+const Home = (props) => {
+    useEffect(() => {
+        console.log(props);
+
+    })
     return (
-        <div>home</div>
+        <div>
+            home
+            {renderRoutes(props.route.routes)}
+        </div>
     )
 }
 
