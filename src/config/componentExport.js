@@ -1,9 +1,9 @@
 import Home from '../pages/Home'
-import Detail from '../pages/Detail'
+import Layout from '../layout'
 import Header from '../layout/Header'
 
 export default {
     Home,
-    Detail,
+    Layout,
     Header
 }

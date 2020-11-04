@@ -1,24 +1,18 @@
 import React from 'react'
 import {
     BrowserRouter,
-    Switch,
     Route
 } from 'react-router-dom'
-import { renderRoutes } from 'react-router-config'
+// import { renderRoutes } from 'react-router-config'
 import routes from './routes'
 import querystring from 'querystring'
 
 const createRoutes = (routes) => {
     return routes.map(r => {
-        if (r.routes) {
-            createRoutes(r.routes)
-        }
-        console.log('111', r);
-        
         return <Route
             key={r.key || r.path}
             path={r.path}
-            exact={r.exact || true}
+            exact={r.exact}
             strict={r.strict}
             render={props => {
                 const reg = /\?(\S*)/g
@@ -29,7 +23,7 @@ const createRoutes = (routes) => {
                     query: queryParams || {}
                 }
                 if (!r.requiresAuth) {
-                    return <r.component {...props} routes={r} />
+                    return <r.component {...params} route={r} />
                 }
             }}
         />
@@ -37,7 +31,10 @@ const createRoutes = (routes) => {
 }
 
 const Router = () => (
-    <BrowserRouter>{renderRoutes(routes)}</BrowserRouter>
+    <BrowserRouter>
+        {/* {renderRoutes(routes)} */}
+        {createRoutes(routes)}
+    </BrowserRouter>
 )
 
 export default Router

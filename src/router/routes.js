@@ -2,14 +2,13 @@ import Components from '../config/componentExport'
 
 const Routes = [
     {
+        path: '/',
+        component: Components['Layout'],
+        routes: []
+    },
+    {
         path: '/home',
-        component: Components['Home'],
-        routes: [
-            {
-                path: '/home/detail',
-                component: Components['Detail']
-            }
-        ]
+        component: Components['Home']
     }
 ]
 
